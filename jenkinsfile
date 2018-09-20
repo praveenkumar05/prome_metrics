@@ -35,13 +35,5 @@ pipeline{
             }
           }
        
-            
-            stage('Puppet Deployment') {
-      
-            steps {
-             	sh '''
-             	ssh root@10.127.127.160 "puppet agent -t && exit 0" 
-             	'''
-                  }
-        } 
-
+        }
+}
