@@ -26,14 +26,7 @@ pipeline{
             }
           }
           
-           
-	 stage('install'){
-            steps{
-                withMaven(maven: 'default'){
-                    sh 'mvn install'
-                }
-            }
-          }
+ 
        
         }
 }
