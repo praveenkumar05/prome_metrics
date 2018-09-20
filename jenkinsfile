@@ -1,0 +1,47 @@
+pipeline{
+    agent any
+ 
+    stages{
+       
+        stage('Compile'){
+            steps{
+                withMaven(maven: 'default'){
+                    sh 'mvn clean compile'
+                }
+            }
+        }
+        stage('Test'){
+            steps{
+                withMaven(maven: 'default'){
+                    sh 'mvn test'
+                }
+            }
+        }
+        
+        stage('install'){
+            steps{
+                withMaven(maven: 'default'){
+                    sh 'mvn install'
+                }
+            }
+          }
+          
+           
+	 stage('install'){
+            steps{
+                withMaven(maven: 'default'){
+                    sh 'mvn install'
+                }
+            }
+          }
+       
+            
+            stage('Puppet Deployment') {
+      
+            steps {
+             	sh '''
+             	ssh root@10.127.127.160 "puppet agent -t && exit 0" 
+             	'''
+                  }
+        } 
+
